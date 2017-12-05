@@ -5,8 +5,8 @@
 // TODO: 雲の位置を左から右に動かす。見えなくなったら左端に戻す。(B 実装:髙橋正樹)
 // TODO: 砲台を青い壁に沿って上下に動かす。(C HW16A086 佐藤直輝)
 // TODO: 弾のスピードを速くし、弾が画面右端を通り越したら再度発射可能にする。(D HW16A086 佐藤直輝)
-// TODO: スコアのサイズを大きくする。(E)
-// TODO: スコアを100点ずつ加算するようにし、5桁の表示に変える。(F)
+// TODO: スコアのサイズを大きくする。(E HW16A129 出口　友香)
+// TODO: スコアを100点ずつ加算するようにし、5桁の表示に変える。(F HW16A129 出口　友香)
 // TODO: PlayBGM()関数を使って、BGMを再生する。(G HW16A021 岩成志帆)
 // TODO: PlaySE()関数を使って、弾の発射時とターゲットに当たった時にSEを再生する。(H HW16A021 岩成志帆)
 
@@ -52,7 +52,7 @@ void Update()
         // ターゲットと弾の当たり判定
         Rect bulletRect(bulletPos, Vector2(32, 20));
         if (targetRect.Overlaps(bulletRect)) {
-            score += 1;         // スコアの加算
+            score += 100;         // スコアの加算
             bulletPos.x = -999; // 弾を発射可能な状態に戻す
         }
     }
@@ -95,8 +95,8 @@ void Update()
     FillRect(targetRect, Color::red);
 
     // スコアの描画
-    SetFont("nicoca_v1.ttf", 20.0f);
-    DrawText(FormatString("%02d", score), Vector2(-319, 199), Color::black);
-    DrawText(FormatString("%02d", score), Vector2(-320, 200), Color::white);
+    SetFont("nicoca_v1.ttf", 40.0f);
+    DrawText(FormatString("%05d", score), Vector2(-319, 199), Color::black);
+    DrawText(FormatString("%05d", score), Vector2(-320, 200), Color::white);
 }
 
